@@ -3,6 +3,8 @@ if($_POST){
     print_r($_POST);
 
     print_r($_FILES['archivo']['name']);
+    // Nombre del input y el nombre temporal del archivo y lo movera con el mismo nombre y a esta carpeta
+    move_uploaded_file($_FILES['archivo']['tmp_name'],$_FILES['archivo']['name']);
 }
 
 
