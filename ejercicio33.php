@@ -1,5 +1,7 @@
 <?php
 
+echo "JSON ENCODE PASAR JSON A String";
+
     $objJson = '[
         {"nombre":"Mario","apellido":"San Martin"},
         {"nombre":"Alejandra","apellido":"Camarena"},
