@@ -12,7 +12,8 @@
 </head>
 <body>
 
-<a href="index.php">Inicio</a>
-<a href="portafolio.php">Portafolio</a>
-<a href="cerrar">Salir</a>
-<br/>
+<div class="container">
+    <a href="index.php">Inicio</a>
+    <a href="portafolio.php">Portafolio</a>
+    <a href="cerrar">Salir</a>
+    <br/>
