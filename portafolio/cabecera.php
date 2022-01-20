@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if( isset($_SESSION["usuario"])!="mario"){
+    header("location:login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,5 +24,5 @@
 <div class="container">
     <a href="index.php">Inicio</a>
     <a href="portafolio.php">Portafolio</a>
-    <a href="cerrar">Salir</a>
+    <a href="cerrar.php">Salir</a>
     <br/>
