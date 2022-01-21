@@ -21,7 +21,7 @@ if( isset($_SESSION["usuario"])!="mario"){
 </head>
 <body>
 
-<div class="container">
+<div class="container text-center">
     <a href="index.php">Inicio</a>
     <a href="portafolio.php">Portafolio</a>
     <a href="cerrar.php">Salir</a>
