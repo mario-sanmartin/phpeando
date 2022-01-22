@@ -4,6 +4,12 @@ session_start();
 if( isset($_SESSION["usuario"])!="mario"){
     header("location:login.php");
 }
+include("conexion.php");
+
+$objConexion = new Conexion();
+$sql = "insert into proyectos (nombre,imagen,descripcion)	VALUES ('Ale','poto.jpg','Imagen de Ale defecando')";
+$objConexion->ejecutar($sql);
+
 
 ?>
 
