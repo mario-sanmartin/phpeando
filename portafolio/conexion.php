@@ -22,9 +22,15 @@ class Conexion{
     }
 
     public function ejecutar($sql){
-
+        // Funciona para insertar/actualizar/eliminar
         $this->conexion->exec($sql);
         return $this->conexion->lastInsertId();
+    }
+
+    public function consultar($sql){
+        $sentencia=$this->conexion->prepare($sql);
+        $sentencia->execute(); 
+        return $sentencia->fetchAll();
     }
 }
 

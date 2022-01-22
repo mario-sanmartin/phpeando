@@ -6,11 +6,6 @@ if( isset($_SESSION["usuario"])!="mario"){
 }
 include("conexion.php");
 
-$objConexion = new Conexion();
-$sql = "insert into proyectos (nombre,imagen,descripcion)	VALUES ('Ale','poto.jpg','Imagen de Ale defecando')";
-$objConexion->ejecutar($sql);
-
-
 ?>
 
 <!DOCTYPE html>
