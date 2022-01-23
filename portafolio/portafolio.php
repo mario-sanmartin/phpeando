@@ -1,13 +1,14 @@
 <?php  include("cabecera.php");
 
 
-$objConexion = new Conexion();
+
 
 if($_POST){
     
     // print_r($_POST);
+    $objConexion = new Conexion();
     $nombre=$_POST['nombre'];
-    $fechaImg= new DateTime('Y-M-D');
+    $fechaImg= new DateTime();
     $imagen =$fechaImg->getTimestamp()."_". $_FILES['archivo']['name'];
     $descripcion = $_POST['descripcion'];
 
@@ -19,15 +20,22 @@ if($_POST){
     $objConexion->ejecutar($sql);
 }
 
-$resultado=$objConexion->consultar("Select * from proyectos");
-// print_r($resultado);
-
+// Borrar Imagen de carpeta y dato de la bd
 if($_GET){
-
+    
     $id=$_GET['borrar'];
+    $objConexion = new Conexion();
+    
+    $imagen=$objConexion->consultar("SELECT imagen FROM proyectos WHERE id=".$id);
+    unlink("imagenes/".$imagen[0]['imagen']);
+
     $sql="DELETE FROM proyectos WHERE id='$id'";
     $objConexion->ejecutar($sql);
 }
+$objConexion = new Conexion();
+$resultado=$objConexion->consultar("Select * from proyectos");
+// print_r($resultado);
+
 ?>
 
 
