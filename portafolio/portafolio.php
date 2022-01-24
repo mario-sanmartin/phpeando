@@ -14,10 +14,11 @@ if($_POST){
 
 
     $imagen_temporal=$_FILES['archivo']['tmp_name'];
-    move_uploaded_file($imagen_temporal,"imagenes/".$imagen);
+    move_uploaded_file($imagen_temporal,"src/img/".$imagen);
 
     $sql = "insert into proyectos (nombre,imagen,descripcion)	VALUES ('$nombre','$imagen','$descripcion')";
     $objConexion->ejecutar($sql);
+    header("location:portafolio.php");
 }
 
 // Borrar Imagen de carpeta y dato de la bd
@@ -27,10 +28,12 @@ if($_GET){
     $objConexion = new Conexion();
     
     $imagen=$objConexion->consultar("SELECT imagen FROM proyectos WHERE id=".$id);
-    unlink("imagenes/".$imagen[0]['imagen']);
+    unlink("src/img/".$imagen[0]['imagen']);
 
     $sql="DELETE FROM proyectos WHERE id='$id'";
     $objConexion->ejecutar($sql);
+    header("location:portafolio.php");
+
 }
 $objConexion = new Conexion();
 $resultado=$objConexion->consultar("Select * from proyectos");
@@ -78,7 +81,9 @@ $resultado=$objConexion->consultar("Select * from proyectos");
                     <tr>
                         <td scope="row"><?php echo $r['id']; ?></td>
                         <td><?php echo $r['nombre']; ?></td>
-                        <td><?php echo $r['imagen']; ?></td>
+                        <td>
+                        <img class="imagen" src="src/img/<?php echo $r['imagen']; ?>" alt="" srcset="">
+                        </td>
                         <td><?php echo $r['descripcion']; ?></td>
                         <td> <a name="" id="" class="btn btn-danger" href="?borrar=<?php echo $r['id']; ?>" role="button">Eliminar</a> </td>
                     </tr>
